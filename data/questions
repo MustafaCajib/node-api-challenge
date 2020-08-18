@@ -1,0 +1,20 @@
+1.Mention two parts of Express that you learned about this week.
+ 
+ express.Router is middleware that makes code cleanier and easier to read,      expressjson allows data to return in json
+ 
+2. Describe Middleware?
+
+Middleware is software that provides common services and capabilities to applications outside of what's offered by the operating system
+ 
+ 3.Describe a Resource?
+
+Crud operations is an example of a resource .. something you can use 
+ 
+ 4.What can the API return to help clients know if a request was successful?
+
+Some data or a status code
+ 
+5. How can we partition our application into sub-applications?
+
+express.router
+

@@ -44,15 +44,16 @@ router.post("/api/actions", validateAction(),(req,res)=>{
     })
 })
 
-router.put("/api/actions/:id", (req,res)=>{
+router.put("/api/actions/:id",validateAction(),validatedByActionID, (req,res)=>{
     actions.update(req.params.id, req.body)
     .then((project) => {
-        if (req.body) {
-          res.status(200).json(project);
+        // if (req.body) {
+        //   res.status(200).json(project);
           
-        } else {
-          res.status(400).json({ message: "Missing body" });
-        }
+        // } else {
+        //   res.status(400).json({ message: "Missing body" });
+        // }
+        res.status(200).json(project)
       })
     .catch((err) => {
         console.log(err);
@@ -60,6 +61,20 @@ router.put("/api/actions/:id", (req,res)=>{
           .status(500)
           .json({ message: "The project info could not be retrieved" });
       });
+})
+
+router.delete("/api/actions/:id" , validatedByActionID, (req,res)=>{
+  actions.remove(req.params.id)
+  .then((project)=>{
+    res.status(200).json(project)
+  })
+  .catch((err) => {
+    console.log(err);
+    res
+      .status(500)
+      .json({ message: "The project info could not be retrieved" });
+  });
+
 })
 
 
